@@ -10,6 +10,19 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
+          "scope": "output",
+          "name": "results",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01UOZJWO6411N4ymiH3A0rVekI5ZCU9QpHM",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
           "scope": "local",
           "name": "temporary2",
           "type": "datatype.string",
@@ -17,18 +30,6 @@
           "is_invisible": false
         },
         "unique_name": "variable_workflow_01UOXY7WR6QUQ3gMkTVB97kelME9hvE2QEG",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "tabletype_01UOY54HFWFME2m9sy5Hn84KoukfjB69Sj7",
-        "properties": {
-          "scope": "local",
-          "name": "gvalenzuela-type-table",
-          "type": "datatype.table",
-          "is_required": false,
-          "is_invisible": false
-        },
-        "unique_name": "variable_workflow_01UOY5RSWBCJL2vMveRNKmyyt7OyTRdA8bT",
         "object_type": "variable_workflow"
       },
       {
@@ -47,14 +48,14 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "results",
+          "value": "1",
+          "scope": "input",
+          "name": "user_to_look_for",
           "type": "datatype.string",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01UOZJWO6411N4ymiH3A0rVekI5ZCU9QpHM",
+        "unique_name": "variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF",
         "object_type": "variable_workflow"
       },
       {
@@ -84,16 +85,15 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "tabletype_01UOY54HFWFME2m9sy5Hn84KoukfjB69Sj7",
         "properties": {
-          "value": "1",
-          "scope": "input",
-          "name": "user_to_look_for",
-          "type": "datatype.string",
+          "scope": "local",
+          "name": "gvalenzuela-type-table",
+          "type": "datatype.table",
           "is_required": false,
           "is_invisible": false
         },
-        "unique_name": "variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF",
+        "unique_name": "variable_workflow_01UOY5RSWBCJL2vMveRNKmyyt7OyTRdA8bT",
         "object_type": "variable_workflow"
       },
       {
@@ -141,12 +141,12 @@
           {
             "unique_name": "definition_activity_01UOYDEQLYMF30Q5N1xJmKTAxFu1JPtHaes",
             "name": "Parallel Branch",
-            "title": "Parallel Branch",
+            "title": "Post",
             "type": "logic.parallel_block",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Parallel Branch",
+              "display_name": "Post",
               "skip_execution": false
             },
             "object_type": "definition_activity",
@@ -217,12 +217,12 @@
           {
             "unique_name": "definition_activity_01UOYDERSI7TJ0nWu8qTjCakMMNm3iJgM6K",
             "name": "Parallel Branch",
-            "title": "Parallel Branch",
+            "title": "Users",
             "type": "logic.parallel_block",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Parallel Branch",
+              "display_name": "Users",
               "skip_execution": false
             },
             "object_type": "definition_activity",
@@ -293,12 +293,12 @@
           {
             "unique_name": "definition_activity_01UOYFV6C8T8Z54CizTM4PQliLQEM2oYUBT",
             "name": "Parallel Branch",
-            "title": "Parallel Branch",
+            "title": "Comments",
             "type": "logic.parallel_block",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "Parallel Branch",
+              "display_name": "Comments",
               "skip_execution": false
             },
             "object_type": "definition_activity",
@@ -482,9 +482,9 @@
         ]
       },
       {
-        "unique_name": "definition_activity_01UOZ4YP4I9LF1iacTZdgCTse4wwrWP9Wfq",
+        "unique_name": "definition_activity_01UP0V90F2NWB5MiZHxO2JFBs7vLDI2TfD8",
         "name": "Select from Table",
-        "title": "Select from Table",
+        "title": "Select from Table - Post",
         "type": "core.selectfromtable",
         "base_type": "activity",
         "properties": {
@@ -508,17 +508,122 @@
             }
           ],
           "continue_on_failure": false,
-          "display_name": "Select from Table",
+          "display_name": "Select from Table - Post",
           "input_table": "$activity.definition_activity_01UOY6ECO33RC6kHjDXO5IDUDx7yu950wzk.output.read_table_from_json$",
           "number_of_rows": {
             "all_rows": true
           },
-          "persist_output": false,
+          "persist_output": true,
           "skip_execution": false,
           "sorting": {
             "no_sort": true
           },
-          "where_clause": "userId=$workflow.definition_workflow_01UOXUA49SBO23cZD1CjAJ6pvRw2FjixMfB.input.variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF$"
+          "where_clause": "userId='$workflow.definition_workflow_01UOXUA49SBO23cZD1CjAJ6pvRw2FjixMfB.input.variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF$'"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01UP0WV8IHU8M6JrxvGbUwDN3StmwEWopcB",
+        "name": "Select from Table",
+        "title": "Select from Table - Comments",
+        "type": "core.selectfromtable",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "columns": [
+            {
+              "column_name": "postId",
+              "column_type": "string"
+            },
+            {
+              "column_name": "id",
+              "column_type": "string"
+            },
+            {
+              "column_name": "name",
+              "column_type": "string"
+            },
+            {
+              "column_name": "email",
+              "column_type": "string"
+            },
+            {
+              "column_name": "body",
+              "column_type": "string"
+            }
+          ],
+          "continue_on_failure": false,
+          "display_name": "Select from Table - Comments",
+          "input_table": "$activity.definition_activity_01UOYFV6CDBNY40rjqTPq6bs721SOYEWrXk.output.read_table_from_json$",
+          "number_of_rows": {
+            "all_rows": true
+          },
+          "persist_output": true,
+          "skip_execution": false,
+          "sorting": {
+            "no_sort": true
+          },
+          "where_clause": "postId='$workflow.definition_workflow_01UOXUA49SBO23cZD1CjAJ6pvRw2FjixMfB.input.variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF$'"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01UOZ4YP4I9LF1iacTZdgCTse4wwrWP9Wfq",
+        "name": "Select from Table",
+        "title": "Select from Table - User",
+        "type": "core.selectfromtable",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "columns": [
+            {
+              "column_name": "id",
+              "column_type": "string"
+            },
+            {
+              "column_name": "name",
+              "column_type": "string"
+            },
+            {
+              "column_name": "username",
+              "column_type": "string"
+            },
+            {
+              "column_name": "email",
+              "column_type": "string"
+            }
+          ],
+          "continue_on_failure": false,
+          "display_name": "Select from Table - User",
+          "input_table": "$activity.definition_activity_01UOYFGMJNDBM0rTx8DLPNDtRGbaFkXKkXn.output.read_table_from_json$",
+          "number_of_rows": {
+            "all_rows": true
+          },
+          "persist_output": true,
+          "skip_execution": false,
+          "sorting": {
+            "no_sort": true
+          },
+          "where_clause": "id='$workflow.definition_workflow_01UOXUA49SBO23cZD1CjAJ6pvRw2FjixMfB.input.variable_workflow_01UOZ4U1MFBAE1bs4vevu4GkLIB5iFQiVTF$'"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01UP04JAICT1L4P4m76v05rRdwumlZ3Cqlk",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01UOXUA49SBO23cZD1CjAJ6pvRw2FjixMfB.output.variable_workflow_01UOZJWO6411N4ymiH3A0rVekI5ZCU9QpHM$",
+              "variable_value_new": "The user $activity.definition_activity_01UOZ4YP4I9LF1iacTZdgCTse4wwrWP9Wfq.output.output_table[0].name$ has made $activity.definition_activity_01UP0V90F2NWB5MiZHxO2JFBs7vLDI2TfD8.output.row_count$ posts and $activity.definition_activity_01UP0WV8IHU8M6JrxvGbUwDN3StmwEWopcB.output.row_count$ comments on our website!"
+            }
+          ]
         },
         "object_type": "definition_activity"
       }
@@ -582,12 +687,6 @@
       "columns": [
         {
           "is_required": true,
-          "name": "title",
-          "title": "Title",
-          "type": "string"
-        },
-        {
-          "is_required": true,
           "name": "body",
           "title": "Body",
           "type": "string"
@@ -603,6 +702,12 @@
           "name": "id",
           "title": "Id",
           "type": "integer"
+        },
+        {
+          "is_required": true,
+          "name": "title",
+          "title": "Title",
+          "type": "string"
         }
       ],
       "base_type": "datatype",
