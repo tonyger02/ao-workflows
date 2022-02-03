@@ -1,0 +1,410 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01UPQUB74LKPZ5fXMvTduV34E692svNvjc9",
+    "name": "Lab7 - gvalenzuela",
+    "title": "Lab7 - gvalenzuela",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "O_mysql_install",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01UPRA26LV0PG2gqVG6wk2TvgGUHGJqiK75",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "O_original_password",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01UPRA5SUEFLU2joQwpoFkR0qUz1a0L0pc5",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Control@50",
+          "scope": "input",
+          "name": "I_root_password",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01UPR9CEVJNTA2nAIcaO73nVxGP6lgioshy",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "O_target_id",
+          "type": "datatype.string",
+          "is_required": false,
+          "is_invisible": false
+        },
+        "unique_name": "variable_workflow_01UPRAAIOAFU81hYug6bqqlTe79wP1aTy21",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Lab7 - gvalenzuela",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "no_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01UPQX4K3P9WP67WWZJyaafElt5jm2Xhi7c",
+        "name": "Group",
+        "title": "MySQL Install",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "MySQL Install",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01UPQVOJA0RJV1KWyuojPb6Jykd4x6lQjbm",
+            "name": "Execute Terminal Command(s)",
+            "title": "Install RPMs",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "command_timeout": 60,
+              "commands": "sudo yum install rpm -y",
+              "continue_on_failure": false,
+              "display_name": "Install RPMs",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPQYN9JVJ3C3R8xHNyRRMAFevihcFjTBo",
+            "name": "Execute Terminal Command(s)",
+            "title": "Dowload MySQL",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "command_timeout": 60,
+              "commands": "sudo rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm",
+              "continue_on_failure": false,
+              "display_name": "Dowload MySQL",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPR31L6RJBD10kE4XqZNv6MsQVVHGzSOG",
+            "name": "Execute Terminal Command(s)",
+            "title": "Execute Terminal Command(s)",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "command_timeout": 60,
+              "commands": "sudo sed -i 's/enabled=1/enabled=0/' /etc/yum.repos.d/mysql-community.repo",
+              "continue_on_failure": false,
+              "display_name": "Execute Terminal Command(s)",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPSA197DD1360dBZsb9gfsNpbuE1YX1QF",
+            "name": "Execute Terminal Command(s)",
+            "title": "Execute Terminal Command(s)",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 900,
+              "command_timeout": 60,
+              "commands": "sudo rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022",
+              "continue_on_failure": false,
+              "display_name": "Execute Terminal Command(s)",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              },
+              "user_responses": [
+                {
+                  "user_expect": "\\[y[\\/]{0,1}[d]{0,1}\\/N\\]:",
+                  "user_response": "y"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPR3A44MVCD5BiXDprj3qhZfEdIaB5oIw",
+            "name": "Execute Terminal Command(s)",
+            "title": "Execute Terminal Command(s)",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 900,
+              "command_timeout": 60,
+              "commands": "sudo yum --enablerepo=mysql80-community install mysql-community-server",
+              "continue_on_failure": false,
+              "display_name": "Execute Terminal Command(s)",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              },
+              "user_responses": [
+                {
+                  "user_expect": "\\[y[\\/]{0,1}[d]{0,1}\\/N\\]:",
+                  "user_response": "y"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPR646SP9X629lF1maHXkYqsCU2AdqYEA",
+            "name": "Execute Terminal Command(s)",
+            "title": "Mysql Start",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "command_timeout": 60,
+              "commands": "sudo service mysqld start",
+              "continue_on_failure": false,
+              "display_name": "Mysql Start",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01UPRDD04GO2600WTRSbXGsO78XDCuaqfvy",
+        "name": "Group",
+        "title": "Group",
+        "type": "logic.group",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Group",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "actions": [
+          {
+            "unique_name": "definition_activity_01UPRIVYRLFYJ2GCEawF25tzOZpRM9BTTo7",
+            "name": "Execute Terminal Command(s)",
+            "title": "Execute Terminal Command(s) - pass",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "command_timeout": 60,
+              "commands": "sudo grep \"A temporary password\" /var/log/mysqld.log\nsudo chkconfig mysqld on",
+              "continue_on_failure": false,
+              "display_name": "Execute Terminal Command(s) - pass",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPRMU0UO3HN0S9w8T91nliL1IlOoM0EWS",
+            "name": "Match Regex",
+            "title": "Match Regex",
+            "type": "core.matchregex",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Match Regex",
+              "input_regex": "root@localhost:.*",
+              "input_string": "$activity.definition_activity_01UPRIVYRLFYJ2GCEawF25tzOZpRM9BTTo7.output.response_body$",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPRH0XGX6HJ6OtBRKCBFrBl2rr5Dfv5F1",
+            "name": "Execute Python Script",
+            "title": "Execute Python Script",
+            "type": "python3.script",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 180,
+              "continue_on_failure": false,
+              "display_name": "Execute Python Script",
+              "script": "import sys\ninput_string = str(sys.argv[1])\ncolon = input_string.find(\":\")\npassword = input_string[colon+2:]",
+              "script_arguments": [
+                "$activity.definition_activity_01UPRMU0UO3HN0S9w8T91nliL1IlOoM0EWS.output.matching_strings[0]$"
+              ],
+              "script_queries": [
+                {
+                  "script_query": "password",
+                  "script_query_name": "password",
+                  "script_query_type": "string"
+                }
+              ],
+              "skip_execution": false
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPRFJG5R8YJ0mLMCqxSP1cm6dZ2msYQjW",
+            "name": "Set Variables",
+            "title": "Set Variables",
+            "type": "core.set_multiple_variables",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Set Variables",
+              "skip_execution": false,
+              "variables_to_update": [
+                {
+                  "variable_to_update": "$workflow.definition_workflow_01UPQUB74LKPZ5fXMvTduV34E692svNvjc9.output.variable_workflow_01UPRA5SUEFLU2joQwpoFkR0qUz1a0L0pc5$",
+                  "variable_value_new": "$activity.definition_activity_01UPRH0XGX6HJ6OtBRKCBFrBl2rr5Dfv5F1.output.script_queries.password$"
+                }
+              ]
+            },
+            "object_type": "definition_activity"
+          },
+          {
+            "unique_name": "definition_activity_01UPRTDV08UYX0jl4osqknI7zcuFFVuVgVB",
+            "name": "Execute Terminal Command(s)",
+            "title": "Execute Terminal Command(s)",
+            "type": "terminal.command",
+            "base_type": "activity",
+            "properties": {
+              "action_timeout": 90,
+              "command_timeout": 60,
+              "commands": "sudo systemctl stop mysqld\nsudo systemctl set-environment MYSQLD_OPTS=\"--skip-grant-tables\"\nsudo systemctl start mysqld\nsudo mysql -u root\nFLUSH PRIVILEGES;\nALTER USER 'root'@'localhost' IDENTIFIED BY '$workflow.definition_workflow_01UPQUB74LKPZ5fXMvTduV34E692svNvjc9.input.variable_workflow_01UPR9CEVJNTA2nAIcaO73nVxGP6lgioshy$';\nupdate mysql.user SET HOST='%' WHERE user='root';\nFLUSH PRIVILEGES;\nexit\nsudo systemctl stop mysqld\nsudo systemctl unset-environment MYSQLD_OPTS\nsudo systemctl start mysqld",
+              "continue_on_failure": false,
+              "display_name": "Execute Terminal Command(s)",
+              "merge_commands": false,
+              "runtime_user": {
+                "target_default": true
+              },
+              "skip_execution": false,
+              "succeeded_expects": [
+                "mysql\u003e"
+              ],
+              "target": {
+                "override_workflow_target": true,
+                "target_id": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm"
+              }
+            },
+            "object_type": "definition_activity"
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm": {
+      "unique_name": "definition_target_01UPR2LZGXEP77TN1DJ8MhRZcbwzoSSiKFm",
+      "name": "terminal-gvalenzuela",
+      "title": "terminal-gvalenzuela",
+      "type": "terminal.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_01UKHZBBM605H1gKrrtIsnfKs8zkxoqKuKJ",
+        "display_name": "terminal-gvalenzuela",
+        "host": "34.139.18.114",
+        "port": 22,
+        "protocol": "ssh"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_01UKHZBBM605H1gKrrtIsnfKs8zkxoqKuKJ": {
+      "unique_name": "definition_runtime_user_01UKHZBBM605H1gKrrtIsnfKs8zkxoqKuKJ",
+      "name": "Bootcamp_LINUX_user",
+      "title": "Bootcamp_LINUX_user",
+      "type": "runtime_user.terminal_key_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "Bootcamp_LINUX_user",
+        "key": "*****",
+        "user": "*****"
+      }
+    }
+  }
+}
